@@ -1,0 +1,264 @@
+class Customer:
+  """
+  This class represents a customer in the delivery system;
+  each customer has a unique ID, name, email, phone number, and address,
+  Customers can place orders, track their order, and view order details.
+  """
+
+  def __init__(self, customer_id, name, email, phone_number, address):
+     """ Initialize customer details when a new customer is created """
+     self.__customer_id = customer_id # Here is a unique identifier for the customer
+     self.__name = name  # Here is the customer's full name (Like mine for exmaple is Amna Al Falahi)
+     self.__email = email # Here is the contact's email for order updates
+     self.__phone_number = phone_number # Here is the phone number for the contacts
+     self.__address = address # Here is the delivery address of the customer 
+
+# Here are the getter and setter methods (We learned this in Session 6 and talked about it ever since)
+  def get_customer_id(self): 
+        """ Here, the function will retrieve the unique order ID for the customer, also to note prof Areej, i used 
+            the triple-quoted strings instead of # because its more used for class methods (we did this in our breakouts 
+            and face to face classes) """
+        return self.__customer_id
+
+  def get_name(self): 
+        """ Here, we will get the customer's name """
+        return self.__name
+
+  def set_name(self, name):
+        """ Here, it will update the customer's name """
+        self.__name = name
+
+  def get_email(self): 
+        """ Here, the customer's email address will be retrieved """
+        return self.__email
+
+  def set_email(self, email):
+        """ Here, it will update the customer's email address """
+        self.__email = email
+
+  def get_phone_number(self): 
+        """ Here, the customer's phone number will be retrieved """
+        return self.__phone_number
+
+  def set_phone_number(self, phone_number):
+        """ Here, it will update the customer's phone number """
+        self.__phone_number = phone_number
+
+  def get_address(self): 
+        """ Here, the customer's address will be retrieved """
+        return self.__address
+
+  def set_address(self, address):
+        """ Here, it will update the customer's delivery address """
+        self.__address = address
+
+# Now the functional methods come in 
+  def place_order(self): 
+        """ Here, the function will handle placing an order when the customer checks out """
+        pass 
+
+  def track_order(self, order_id):
+        """ Here, it allows the customer to check the status of their order using the order ID """
+        pass 
+
+  def view_order_details(self, order_id):
+        """ Here, it will retrieve and display all details about a specific order that the customer placed """
+        pass 
+
+
+class Order:
+   """ Here the class represents an order in the system, the order has multiple items, has a total price,
+       and is associated with a customer, and it also has a delivery address and an order status that 
+       updates throughout the process """
+
+   def __init__(self, order_id, customer_id, order_status, total_price, delivery_address):
+       """ Here it will initialize the order detailes when a new order will be placed """
+       self.__order_id = order_id # Here, is the order identifier for each ID
+       self.__customer_id = customer_id  # Here, is the  ID of the customer who placed the order
+       self.__order_status = order_status # Here, is the current order status 
+       self.__total_price = total_price # Here, is orders total cost 
+       self.__delivery_address = delivery_address # Here, is where the order will be delivered
+
+# Here are the getter and setter methods (We learned this in Session 6 and talked about it ever since)
+   def get_order_id(self):
+      """ Here, it will retrieve the order ID """
+      return self.__order_id
+
+   def get_order_status(self):
+      """ Here, we get the current status of the order """
+      return self.__order_status
+
+   def set_order_status(self, status):
+      """ Here, it will update the status of the order """
+      self.__order_status = status
+
+   def get_total_price(self):
+      """ Here, we get the total price of the order """
+      return self.__total_price
+
+   def set_total_price(self, price):
+      """ Here, it will update the total price """
+      self.__total_price = price
+
+   def get_delivery_address(self):
+      """ Here, we retrieve the delivery address for the order """
+      return self.__delivery_address
+
+   def set_delivery_address(self, address):
+      """ Here, it will update the delivery address, but only if we need it ofc """
+      self.__delivery_address = address
+
+# Now the functional methods come in 
+
+   def calculate_total_price(self):
+      """ Here, we calculate and return the total cost of the order so for exmaple like (things we got + delivery + tax) """
+      pass 
+
+   def generate_delivery_note(self):
+      """ Here, generate the delivery note with all the details of the order """
+      pass 
+
+   def update_order_status(self, status):
+      """ Here, we can change the order status as it progresses through the system """
+      pass   
+
+class Products:
+   """ 
+   So, this class represents which products are available for sell, all the products have their own 
+   ID, name, description, price, and if they are in stock """
+
+   def __init__(self, product_id, name, description, price, in_stock):
+       """ Here we will initialize the products details, for when a product is added to the system """
+       self.__product_id = product_id
+       self.__name = name 
+       self.__description = description
+       self.__price = price
+       self.__in_stock = in_stock
+
+# Here are the getter and setter methods (We learned this in Session 6 and talked about it ever since)
+
+   def get_product_id(self):
+      """ Here, it will product's order ID """
+      return self.__product_id
+
+   def get_name(self):
+      """ Here, we get the name of the product """
+      return self.__name
+
+   def set_name(self, name):
+      """ Here, it will update the name of the product  """
+      self.__name = name
+
+   def get_price(self):
+      """ Here, we will retrieve the price of the product """
+      return self.__price
+
+   def set_price(self, price):
+      """ Here, it will update the price of the product that is needed  """
+      self.__price = price
+
+   def is_available(self):
+      """ Here, we will check if the product is in stock """
+      return self.__in_stock
+
+   def set_availability(self, availability):
+      """  Here, we will update the stock if the product's availability """
+      self.__in_stock = availability
+
+
+class DeliveryNote:
+  """
+  Here the class shows us a delivery note which gives us all necessary order details for delivery, and it also 
+  includes the delivery date, method, and  details of the package 
+  """
+
+  def __init__(self, note_id, order_id, delivery_date, delivery_method, package_details):
+      """ Here, we will initialize the delivery note details when an order is processed """
+      self.__note_id = note_id 
+      self.__order_id = order_id 
+      self.__delivery_date = delivery_date
+      self.__delivery_method = delivery_method
+      self.__package_details = package_details
+
+# Here are the getter and setter methods (We learned this in Session 6 and talked about it ever since)
+
+  def get_note_id(self):
+      """ Here, it will retrieve the delivery note's ID """
+      return self.__note_id
+
+  def get_order_id(self):
+      """ Here, we get the order ID that is associated with the delivery note. """
+      return self.__order_id
+
+  def get_delivery_date(self):
+      """ Here we will retrieve the delivery date """
+      return self.__delivery_date
+
+  def set_delivery_date(self, date):
+      """ Here we update the delivery date if it changed """
+      self.__delivery_date = date
+ 
+  def get_delivery_method(self):
+      """ Here we retrieve the delivery method """
+      return self.__delivery_method
+
+  def get_package_details(self):
+      """ Here, we get the package details """
+      return self.__package_details
+
+  def set_package_details(self, details):
+      """ Here, we will update the package details ofc if we needed to """
+      self.__package_details = details
+
+# Now we will complete part 4 by creating the object for each class
+
+customer1 = Customer(
+    customer_id="001",
+    name="Amna Al Falahi",
+    email="amna.alfalahi@example.com",
+    phone_number="0569875930",
+    address="Al Ain, UAE"
+)
+
+# Now we will reate the Order
+order1 = Order(
+    order_id="MAKEUP0011",
+    customer_id=customer1.get_customer_id(),
+    order_status="Out for Delivery",
+    total_price=438.25,
+    delivery_address=customer1.get_address()
+)
+
+# Now we will create the product (Make up product ofc)
+product1 = Products (
+    product_id="MAKE_UP_334",
+    name="Huda Beauty eyeliner",
+    description="Jet black eyeliner",
+    price=438.25,
+    in_stock=True
+)
+# Now we move on to creating the devlivery note
+delivery_note1 = DeliveryNote(
+    note_id="Note_dev_332",
+    order_id=order1.get_order_id(),
+    delivery_date="2025-4-17",
+    delivery_method="Next day express delivery",
+    package_details="1x Huda Beauty eyeliner"
+)
+
+# Now we will add the function to print the delivery note
+
+def generate_delivery_note_display(delivery_note, customer, order): 
+# The function here takes the objects and formats the delivery note details in a good neat way
+    print("\n======================= Delivery Note ========================")
+    print(f"  Delivery Note Id          :{delivery_note.get_note_id()}")
+    print(f"  Order Id                  :{delivery_note.get_order_id()}")
+    print(f"  Customer Name             :{customer.get_name()}")
+    print(f"  Delivery Address          :{order.get_delivery_address()}")
+    print(f"  Delivery Date             :{delivery_note.get_delivery_date()}")
+    print(f"  Delivery Method           :{delivery_note.get_delivery_method()}")
+    print(f"  Package Details           :{delivery_note.get_package_details()}")
+    print("\n======================= hello, prof Areej ========================")
+  
+# Our fianl step is to call the function to display everything we worked hard for(The delivery note)
+generate_delivery_note_display(delivery_note1, customer1, order1)
